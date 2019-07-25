@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>8-Ball-Pool</title>
+  <style>
+    body {
+      background-color: black;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="canvas"></canvas>
+
+  <script src="vector2.js"></script>
+  <script src="input/buttonstate.js"></script>
+  <script src="input/mouse.js"></script>
+  <script src="canvas.js"></script>
+  <script src="color.js"></script>
+  <script src="constants.js"></script>
+  <script src="assets.js"></script>
+  <script src="score.js"></script>
+  <script src="ball.js"></script>
+  <script src="stick.js"></script>
+  <script src="menu/label.js"></script>
+  <script src="menu/button.js"></script>
+  <script src="menu/menu.js"></script>
+  <script src="menu/mainMenu.js"></script>
+  <script src="player.js"></script>
+  <script src="gamePolicy.js"></script>
+  <script src="gameworld.js"></script>
+  <script src="game.js"></script>
+
+  <script>
+    loadAssets(poolGame.start.bind(poolGame));
+  </script>
+</body>
+</html>
