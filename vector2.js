@@ -1,4 +1,3 @@
-// the purpose of this constructor is that it helps to deal with arithmetical operation between vectors
 function Vector2(x = 0, y = 0) {
   this.x = x;
   this.y = y;
@@ -38,10 +37,6 @@ Vector2.prototype.dot = function(vector) {
 
 Vector2.prototype.length = function() {
   return Math.sqrt(Math.pow(this.x, 2) + Math.pow(this.y, 2)); //returns length of the vector
-}
-
-Vector2.prototype.distFrom = function(vector) {
-  return this.subtract(vector).length();
 }
 
 Vector2.prototype.distanceFrom = function(obj){

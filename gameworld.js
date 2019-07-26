@@ -30,14 +30,7 @@ function GameWorld() {
   
   this.stick = new Stick(new Vector2(411, 413), this.whiteBall.shoot.bind(this.whiteBall));
 
-  // this.gameOver = false;
 
-  // this.table = {
-  //   TopY: 57,
-  //   RightX: 1443,
-  //   BottomY: 768,
-  //   LeftX: 57
-  // }
 }
 
 GameWorld.prototype.getBallsSetByColor = function(color) {
@@ -60,8 +53,6 @@ GameWorld.prototype.handleCollisions = function() {
 
   for(let i = 0; i < this.balls.length; i++) {
 
-    // this.balls[i].handleBallInPocket();
-    // this.balls[i].collideWithTable(this.table);
     for(let j = i + 1; j < this.balls.length; j++) {
       const firstBall = this.balls[i];
       const secondBall = this.balls[j];
@@ -164,7 +155,6 @@ GameWorld.prototype.ballsMoving = function() {
 }
 
 GameWorld.prototype.reset = function() {
-  // this.gameOver = false;
 
   for(var i = 0; i < this.balls.length; i++) {
     this.balls[i].reset();

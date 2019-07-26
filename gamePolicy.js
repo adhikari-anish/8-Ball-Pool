@@ -43,13 +43,12 @@ GamePolicy.prototype.reset = function() {
 }
 
 GamePolicy.prototype.drawScores = function() {
-  canvas.drawText("PLAYER " + (this.turn + 1), new Vector2(790, 200), new Vector2(150, 0), "#096834", "top", "Impact", "70px");
+  canvas.drawText("PLAYER " + (this.turn + 1), new Vector2(790, 200), new Vector2(150, 0), "#074523", "top", "Impact", "70px");
   this.players[0].totalScore.draw(); 
   this.players[1].totalScore.draw();
 
   this.players[0].matchScore.drawLines(this.players[0].color);
   this.players[1].matchScore.drawLines(this.players[1].color);
-  // console.log(this.players[1].color)
 }
 
 GamePolicy.prototype.checkColisionValidity = function(ball1, ball2) {
@@ -95,14 +94,10 @@ GamePolicy.prototype.handleBallInHole = function(ball) {
     if(ball.color === COLOR.red) {
       currentPlayer.color = COLOR.red;
       secondPlayer.color = COLOR.yellow;
-      // console.log('currentPlayer',currentPlayer.color);
-      // console.log('secondPlayer',secondPlayer.color);
     }
     else if(ball.color === COLOR.yellow) {
       currentPlayer.color = COLOR.yellow;
       secondPlayer.color = COLOR.red;
-      // console.log('currentPlayer',currentPlayer.color);
-      // console.log('secondPlayer',secondPlayer.color);
     }
     else if(ball.color === COLOR.black) {
       this.won = true;
@@ -115,7 +110,6 @@ GamePolicy.prototype.handleBallInHole = function(ball) {
 
   if(currentPlayer.color === ball.color) {
     currentPlayer.matchScore.increment();
-    // console.log('currP matchscore', currentPlayer.matchScore)
     this.scored = true;
     this.validBallsInsertedOnTurn++;
   }
@@ -164,13 +158,11 @@ GamePolicy.prototype.handleBallInHole = function(ball) {
 GamePolicy.prototype.switchTurns = function() {
   this.turn++;
   this.turn %= 2;
-  // console.log(this.turn);
 }
 
 GamePolicy.prototype.updateTurnOutcome = function() {
 
   if(!this.turnPlayed) {
-    // console.log('hello')
     return;
   }
 
@@ -198,7 +190,6 @@ GamePolicy.prototype.updateTurnOutcome = function() {
 
   if(!this.scored || this.foul)
     this.switchTurns();
-    // console.log(this.turn)
   
   this.scored = false;
   this.turnPlayed = false;
@@ -260,21 +251,3 @@ GamePolicy.prototype.isInsideHole = function(pos){
          this.isInsideBottomLeftHole(pos) || this.isInsideBottomRightHole(pos) ||
          this.isInsideTopCenterHole(pos) || this.isInsideBottomCenterHole(pos);
 }
-
-// GamePolicy.prototype.initiateState = function(policyState) {
-//   this.turn = policyState.turn;
-//   this.firstCollision = policyState.firstCollision;
-//   this.foul = policyState.foul;
-//   this.scored = policyState.scored;
-//   this.won = policyState.won;
-//   this.turnPlayed = policyState.turnPlayed;
-//   this.validBallsInsertedOnTurn = policyState.validBallsInsertedOnTurn;
-
-//   this.players[0].totalScore.value = policyState.players[0].totalScore.value;
-//   this.players[1].totalScore.value = policyState.players[1].totalScore.value;
-
-//   this.players[0].matchScore.value = policyState.players[0].matchScore.value;
-//   this.players[0].color = policyState.players[0].color;
-//   this.players[1].matchScore.value = policyState.players[1].matchScore.value;
-//   this.players[1].color = policyState.players[1].color;
-// }

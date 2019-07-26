@@ -44,7 +44,6 @@ Ball.prototype.updatePosition = function(delta) {
     this.inHole = true;
     setTimeout(function() {ball.visible = false; ball.velocity = Vector2.zero;}, 100);
     poolGame.policy.handleBallInHole(this);
-    // console.log(poolGame.policy.handleBallInHole)
     return;
   }
 
@@ -79,7 +78,7 @@ Ball.prototype.shoot = function(power, rotation) {
     
   this.moving = true;
 
-  this.velocity = calculateBallVelocity(power, rotation);  
+  this.velocity = calculateBallVelocity(power, rotation);
 }
 
 var calculateBallVelocity = function(power, rotation) {
@@ -95,7 +94,6 @@ Ball.prototype.collideWithBall = function(ball) {
     return;
 
   //finding a normal vector
-  // console.log(ball);
 
   const n = this.position.subtract(ball.position);
   const dist = n.length();
@@ -111,7 +109,7 @@ Ball.prototype.collideWithBall = function(ball) {
     ballsCollide.play();
   }
 
-  // finding minimum translation distance
+  // finding minimum translation distance //so that two balls doesn't merge after collision
 
   const mtd = n.mult((BALL_DIAMETER - dist) / dist);
 
@@ -149,57 +147,6 @@ Ball.prototype.collideWithBall = function(ball) {
   ball.moving = true;
 
 }
-
-// Ball.prototype.handleBallInPocket = function() {
-  
-//   let inPocket = CONSTANTS.pockets.some(pocket => {
-//     return this.position.distFrom(pocket) < CONSTANTS.pocketRadius;
-//   });
-
-//   if(!inPocket) {
-//     return;
-//   }
-
-//   this.visible = false;
-//   this.moving = false;
-// }
-
-// Ball.prototype.collideWithTable = function(table) {
-
-//   if(!this.moving) {
-//     return;
-//   }
-
-//   let collided = false;
-
-//   if(this.position.y <= table.TopY + BALL_RADIUS) {
-//     this.position.y = table.TopY + BALL_RADIUS;
-//     this.velocity = new Vector2(this.velocity.x, - this.velocity.y);
-//     collided = true;
-//   }
-
-//   if(this.position.x >= table.RightX - BALL_RADIUS) {
-//     this.position.x = table.RightX - BALL_RADIUS;
-//     this.velocity = new Vector2(-this.velocity.x, this.velocity.y);
-//     collided = true;
-//   }
-
-//   if(this.position.y >= table.BottomY - BALL_RADIUS) {
-//     this.position.y = table.BottomY - BALL_RADIUS;
-//     this.velocity = new Vector2(this.velocity.x, -this.velocity.y);
-//     collided = true;
-//   }
-
-//   if(this.position.x <= table.LeftX + BALL_RADIUS) {
-//     this.position.x = table.LeftX + BALL_RADIUS;
-//     this.velocity = new Vector2(-this.velocity.x, this.velocity.y);
-//     collided = true;
-//   }
-
-//   if(collided) {
-//     this.velocity = this.velocity.mult(0.98);
-//   }
-// }
 
 Ball.prototype.handleCollision = function(newPos){
 
